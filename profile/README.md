@@ -63,7 +63,7 @@ NexERP는 복잡한 기업의 프로젝트, 재고, 물류 관리를 하나로 �
 
 <div id="2"></div>
 
-### 서비스 개요
+### 📦 서비스 개요
 <p align="center">
   <img width="46%" height="400" alt="image" src="https://github.com/user-attachments/assets/c804c93a-9295-4abc-87f9-cfcbdce681ea" />
   <img width="46%" height="431" alt="image" src="https://github.com/user-attachments/assets/49dc11ee-f9b9-47c6-b0bb-013a22a1238c" />
