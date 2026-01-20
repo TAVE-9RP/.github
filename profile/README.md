@@ -7,11 +7,13 @@ NexERP는 복잡한 기업의 프로젝트, 재고, 물류 관리를 하나로 �
 
 <img width="800" height="600" alt="TAVE16기_구알피_썸네일" src="https://github.com/user-attachments/assets/3e77c51e-f272-4892-ab2e-c40db66f8d4b" />
 
+
+
 ---
 #### 🗓️ 프로젝트 기간
 
 
-: 2025년 9월 ~ 2025년 10월
+: 2025년 10월 ~ 2026년 01월
 
 
 ### 👥 NexERP 프로젝트 팀원
@@ -24,9 +26,22 @@ NexERP는 복잡한 기업의 프로젝트, 재고, 물류 관리를 하나로 �
 ---
 ### 🏢 NexERP 서비스 소개
 
-[서비스 링크](https://nex-erp.vercel.app/)
+[서비스 링크](https://nex-erp.vercel.app/) &
+[서비스 시연 영상](https://youtu.be/jHK16gZXv6I?si=vbSSauvjDAMKnEzM)
 
 </div>
+
+### 서비스 소개 목차
+
+
+1. [**💡 서비스 개발배경**](#1)
+1. [**📦 서비스 개요**](#2)
+1. [**🛠️ SW Architecture**](#3)
+1. [**🚀 NexERP 핵심 기능**](#4)
+1. [**💡 기대 효과**](#5)
+
+
+<div id="1"></div>
 
 ### 💡 서비스 개발배경
 <p align="center">
@@ -45,6 +60,8 @@ NexERP는 복잡한 기업의 프로젝트, 재고, 물류 관리를 하나로 �
 
 
 > 대기업 중심의 고도화된 ERP 시장은 이미 포화 상태이나, 실질적인 도입 니즈가 큰 중소·중견 기업은 여전히 사각지대에 있음
+
+<div id="2"></div>
 
 ### 서비스 개요
 <p align="center">
@@ -83,12 +100,14 @@ NexERP는 복잡한 기업의 프로젝트, 재고, 물류 관리를 하나로 �
 
 ---
 
+<div id="3"></div>
+
 ### 🛠️ SW Architecture
 <p align="center">
   <img width="60%" alt="image" src="https://github.com/user-attachments/assets/a866cb4d-dc3f-4bd7-bdf2-380bc0d0315d" />
 </p>
 
-### 서비스 인프라 및 CI/CD (Main Infrastructure)
+#### 서비스 인프라 및 CI/CD (Main Infrastructure)
 
 사용자가 서비스에 접속하고 최신 코드가 배포되는 핵심 경로
 
@@ -96,7 +115,7 @@ NexERP는 복잡한 기업의 프로젝트, 재고, 물류 관리를 하나로 �
 - 컴퓨팅: VPC 내부의 프라이빗 서브넷에 위치한 EC2가 실제 애플리케이션을 구동, RDS 활용
 - 배포 자동화: 코드 push 시, Github Actions가 도커 이미지를 빌드하여 ECR에 Push 후, EC2가 이를 Pull 하여 컨테이너 기반 서비스 실행
 
-### 데이터 및 ETL 파이프라인 (Data Pipeline)
+#### 데이터 및 ETL 파이프라인 (Data Pipeline)
 
 NexERP의 핵심인 예측 KPI를 생성하기 위한 배치 처리 프로세스입니다.
 
@@ -108,12 +127,71 @@ NexERP의 핵심인 예측 KPI를 생성하기 위한 배치 처리 프로세스
 
 - 서비리스 기반의 ETL 파이프라인
     - Step 1. Data Loading (02:00 KST): 복제본에서 추출된 로우 데이터(Raw Data)를 CSV 형태로 S3 Data Lake에 적재
+ 
+
     - Step 2. Analysis & Schema Conversion (03:00 KST): Event Bridge 스케줄러가 AWS Lambda를 트리거하여, S3의
       데이터를 분석하고 서비스 규격에 맞는 JSON 형태로 변환
     - Step 3. Persistent Snapshot (04:00 KST): 분석 결과를 다시 RDS 테이블에 저장
 
 
 - 스토리지 및 비용 최적화: S3에 저장된 원본 데이터는 LifeCycle Policy에 의해 120일 후 자동 삭제하여 스토리지 비용 관리 효율 확보
+---
+
+<div id="4"></div>
+
+### 🚀 NexERP 핵심 기능
+#### 01. 지시에서 실행으로 끊김없는 업무 활성화
+<img width="70%" height="466" alt="image" src="https://github.com/user-attachments/assets/c157e63a-d162-4053-9421-1a76762dc7a4" />
 
 
 
+#### 02. 할당된 업무의 시작점, 그리고 명확한 데이터 기반의 성과 확인
+<img width="70%" height="336" alt="image" src="https://github.com/user-attachments/assets/fddcc1d3-07e6-431a-81ae-d46f056be844" />
+
+✔️ 모든 업무는 상태별 필터링 및 검색이 가능하여 손쉽게 업무의 진행 상황도 파악할 수 있습니다.
+
+#### 03. 실시간 데이터 동기화 기반의 업무 완수
+<img width="70%" height="436" alt="image" src="https://github.com/user-attachments/assets/298cbb90-0a29-4084-8250-6b692e89cff7" />
+
+#### 04. 개별 성과를 모아 프로젝트 완성
+<img width="70%" height="445" alt="image" src="https://github.com/user-attachments/assets/13b995a9-82fd-4dfd-a140-5c879850a316" />
+
+📍 01 ~ 04 실제 사용 시 가이드라인은 다음과 같습니다.
+
+✔️ 관리자가 프로젝트 할당 (담당자 지정, 업무 설명)
+
+✔️ 지정된 담당자는 할당된 프로젝트 리스트에서 할당된 업무 확인 후 자신의 부서에 맞는 업무 필수 정보 입력 후 승인 요청
+
+✔️ 관리자가 승인 -> 담당자 업무 진행 후 (목표 입고/출하 수량에 맞게 입고 및 출하 처리) 업무 완료 처리 
+
+✔️ 프로젝트 완수
+
+#### 05. 복잡한 재고 관리를 한 눈에, 오차 없는 실시간 모니터링
+<img width="70%" height="459" alt="image" src="https://github.com/user-attachments/assets/fa3e25f4-fde9-436c-8c0e-aa171bf1c70f" />
+
+#### 06. Smart한 인사 시스템
+<img width="70%" height="442" alt="image" src="https://github.com/user-attachments/assets/b76f85d5-d47f-4274-b09a-afa90581835f" />
+
+#### 07. 모든 업무의 로드맵
+<img width="70%" height="478" alt="image" src="https://github.com/user-attachments/assets/c7e209d5-6983-4840-80d4-12cf7f5866c6" />
+
+✔️ 단순 프로젝트를 관리를 넘어 실시간 재고 관리(입/출하 이력 확인) 제공
+
+✔️ 권한/가입 등의 인사 관리 시스템 제공
+
+✔️ 최종적으로 모든 업무의 로드맵이 되는 KPI 그래프 지표 제공
+
+---
+
+<div id="5"></div>
+
+### 💡 기대 효과
+
+#### 업무 프로세스의 투명성 및 정합성 확보
+- RBAC 권한 관리와 단계별 승인/반려 워크플로우를 통해 업무 책임 소재를 명확히 하고 전사적 데이터 정합성(Single Source of Truth)을 유지
+
+#### 데이터 기반의 선제적 의사결정
+- 단순 기록 중심의 ERP를 벗어나, KPI 지표로 재고 부족 및 업무 지연 리스크를 사전에 방지
+
+#### 운영 비용 절감 및 도입 장벽 완화
+- 클라우드 기반(Saas) 아키텍처를 통해 초기 인프라 구축 비용을 절감하고, 빠르고 손쉬운 세팅으로 중소기업의 ERP 진입 장벽 제거
